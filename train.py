@@ -66,11 +66,11 @@ if __name__ == '__main__':
     task = Task.init(
       project_name='ClearML-AQuA-Demo',    # project name of at least 3 characters
       task_name='squad-fine-tuning-' + str(int(time.time())), # task name of at least 3 characters
-      task_type=None,
+      task_type="training",
       tags=None,
       reuse_last_task_id=True,
       continue_last_task=False,
-      output_uri="s3://aqua-idx",
+      output_uri=True,
       auto_connect_arg_parser=True,
       auto_connect_frameworks=True,
       auto_resource_monitoring=True,
@@ -82,6 +82,9 @@ if __name__ == '__main__':
     tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
     tokenized_squad = squad.map(preprocess_function, batched=True, remove_columns=squad["train"].column_names)
     data_collator = default_data_collator
+
+    # Load the model that we will pre-train
+    model = AutoModelForQuestionAnswering.from_pretrained("distilbert-base-uncased")
 
     # Training arguments
     training_args = TrainingArguments(
