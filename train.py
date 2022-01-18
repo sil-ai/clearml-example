@@ -71,7 +71,7 @@ if __name__ == '__main__':
       tags=None,
       reuse_last_task_id=True,
       continue_last_task=False,
-      output_uri=True,
+      output_uri="s3://aqua-idx/squad-ex",
       auto_connect_arg_parser=True,
       auto_connect_frameworks=True,
       auto_resource_monitoring=True,
@@ -112,6 +112,9 @@ if __name__ == '__main__':
     trainer.train()
 
     # Save the model
-    trainer.save_model("blah")
+    trainer.save_model("squad-ex")
+
+    # Save the artifact in ClearML
+    task.upload_artifact(name='squad-ex', artifact_object='results/squad-ex')
 
 
