@@ -115,6 +115,6 @@ if __name__ == '__main__':
     trainer.save_model("squad-ex")
 
     # Save the artifact in ClearML
-    task.upload_artifact(name='squad-ex', artifact_object='./results/squad-ex/')
+    task.upload_artifact(name='squad-ex', artifact_object='squad-ex/')
 
 
