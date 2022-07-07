@@ -65,13 +65,13 @@ if __name__ == '__main__':
     # ClearML stuff
     Task.add_requirements("-rrequirements.txt")
     task = Task.init(
-      project_name='IDX_Nathan_Internship',    # project name of at least 3 characters
-      task_name='squad-fine-tuning-' + str(int(time.time())), # task name of at least 3 characters
+      project_name='IDX_AdAPT_Experiments',    # project name of at least 3 characters
+      task_name='test-demo-' + str(int(time.time())), # task name of at least 3 characters
       task_type="training",
       tags=None,
       reuse_last_task_id=True,
       continue_last_task=False,
-      output_uri="s3://nathan-internship/clearml-artifacts",
+      output_uri="s3://adapt-experiments",
       auto_connect_arg_parser=True,
       auto_connect_frameworks=True,
       auto_resource_monitoring=True,
